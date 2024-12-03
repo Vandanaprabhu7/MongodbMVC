@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Portal</title>
+    <style>
+      table {
+        width: 96%;
+        margin: 30px;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid black;
+      }
+      th,
+      td {
+        padding: 15px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+      button {
+        padding: 5px 10px;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('partials/header') %>
+    <h1>Employees Details</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Delete Operation</th>
+          <th>Update Operation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% allemployeedetails.forEach(emp => { %>
+        <tr>
+          <td><%= emp.first_name %></td>
+          <td><%= emp.last_name %></td>
+          <td><%= emp.email %></td>
+          <td>
+            <a href="/web/employees/delete/<%= emp.eid %>">Delete</a>
+          </td>
+          <td>
+            <a href="/web/employees/update/<%= emp.eid %>">Update</a>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <%- include('partials/footer') %>
+  </body>
+</html>
